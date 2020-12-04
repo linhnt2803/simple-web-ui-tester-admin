@@ -1,0 +1,30 @@
+{
+  "name": "simple-web-ui-tester-admin",
+  "version": "1.0.0",
+  "description": "Simple UI using npm simple-web-ui-tester to create scripts test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linhnt2803/simple-web-ui-tester-admin.git"
+  },
+  "keywords": [
+    "simple-web-ui-tester-admin",
+    "simple-web-ui-tester",
+    "web-ui-tester",
+    "test",
+    "web",
+    "ui"
+  ],
+  "author": "LT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linhnt2803/simple-web-ui-tester-admin/issues"
+  },
+  "homepage": "https://github.com/linhnt2803/simple-web-ui-tester-admin#readme",
+  "dependencies": {
+    "simple-web-ui-tester": "^1.0.5"
+  }
+}
