@@ -1,3 +1,7 @@
+# MacOS
+.DS_Store
+.DB_Store
+
 # Logs
 logs/*
 *.log
@@ -80,7 +84,6 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
@@ -103,8 +106,14 @@ dist
 # TernJS port file
 .tern-port
 
-# VSCode
+# Editor directories and files
+.idea
 .vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # build
 build/*

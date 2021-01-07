@@ -1,45 +1,21 @@
-const tester = require("simple-web-ui-tester");
-const { stringNotEmpty, stringLengthMinMax, validateAll } = require("simple-web-ui-tester/modules/utils/validator")
+const { BrowserProvider } = require("simple-web-ui-tester");
+const openServer = require("./server");
 
-function test() {
-  tester.addActionSetting('capture_screen', {
-    metaKeys: ['path'],
-    templateCommand: "capture_screen to <<path>>",
-    regexCommand: /^capture_screen to <<(?<path>.*)>>(?<note>.*)$/,
-    metaValidator: function (meta) {
-      let { path } = meta;
-      return validateAll([
-        stringNotEmpty("path")(path),
-        stringLengthMinMax("path", 1, 512)(path)
-      ]);
-    },
-    handler: async function (meta, page) {
-      let { path } = meta;
-      let startTime = Date.now();
-      await page.screenshot({ path: path })
-        .catch(err => {
-          if (err.message) {
-            err.message = `capture_screen Error: ${err.message}`
-          }
-          throw err
-        });
+main();
 
-      return {
-        summary: `capture_screen to <<${path}>>`,
-        duration: Date.now() - startTime,
-      };
-    },
-  })
+async function main() {
+  try {
+    const browserProvider = new BrowserProvider();
+    const browser = await browserProvider.lauchBrowser();
+    const port = process.env.PORT || 8765;
+    const urlServer = await openServer(port);
 
-  const actionsData = [
-    "go_to <<https://www.google.com.vn>>",
-    "input_to <<input[name='q']>> value <<simple-web-ui-tester npm>>",
-    "click_on <<input[name='btnK']>>",
-    "capture_screen to <<screen.png>>",
-    "wait <<3000>>",
-  ];
+    const adminPage = (await browser.pages())[0] || (await browser.newPage());
 
-  return tester.formatThenRunActions(actionsData);
+    if (process.env.NODE_ENV == "production") {
+      adminPage.goto(urlServer);
+    }
+  } catch (err) {
+    console.error(err);
+  }
 }
-
-test().then(console.log).catch(console.error);
