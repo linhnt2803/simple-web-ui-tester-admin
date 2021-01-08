@@ -1,11 +1,15 @@
 <template>
-  simple-web-ui-tester-admin
+  <home-page />
 </template>
 
 <script>
+import HomePage from './pages/Home'
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    HomePage
+  },
 }
 </script>
 
