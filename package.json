@@ -37,11 +37,11 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "simple-web-ui-tester": "^1.1.1",
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "simple-web-ui-tester": "^1.1.1"
   },
   "devDependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
